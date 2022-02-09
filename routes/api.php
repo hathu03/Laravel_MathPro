@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,8 @@ Route::prefix( 'auth')->group(function () {
 //    Route::post('refresh', 'AuthController@refresh');
         Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
     });
+});
+Route::prefix("users")->group(function (){
+    Route::get("/",[UserController::class,"index"]);
+    Route::post("/create",[UserController::class,"store"]);
 });
