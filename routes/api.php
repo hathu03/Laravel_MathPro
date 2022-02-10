@@ -24,6 +24,8 @@ Route::prefix( 'auth')->group(function () {
         Route::post('me', [\App\Http\Controllers\AuthController::class,'me']);
     });
 });
+
+
 Route::prefix("users")->group(function (){
     Route::get("/",[UserController::class,"index"]);
     Route::post("/create",[UserController::class,"store"]);
