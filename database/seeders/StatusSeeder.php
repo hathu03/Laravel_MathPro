@@ -14,7 +14,7 @@ class StatusSeeder extends Seeder
      */
     public function run()
     {
-        //
+
         $status = new Status();
         $status->name = "private";
         $status->save();
