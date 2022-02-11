@@ -1312,6 +1312,13 @@
                 "JWS",
                 "jwt"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/lcobucci/jwt/issues",
+                "source": "https://github.com/lcobucci/jwt/tree/3.3.3"
+            },
+>>>>>>> 47f1a6f51b7319fe5a017225efd51695920a31a7
             "funding": [
                 {
                     "url": "https://github.com/lcobucci",
@@ -1795,6 +1802,13 @@
                 "jwt",
                 "token"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/namshi/jose/issues",
+                "source": "https://github.com/namshi/jose/tree/master"
+            },
+>>>>>>> 47f1a6f51b7319fe5a017225efd51695920a31a7
             "time": "2016-12-05T07:27:31+00:00"
         },
         {
@@ -4194,6 +4208,12 @@
                 "portable",
                 "shim"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php56/tree/v1.20.0"
+            },
+>>>>>>> 47f1a6f51b7319fe5a017225efd51695920a31a7
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5200,6 +5220,13 @@
                 "jwt",
                 "laravel"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/tymondesigns/jwt-auth/issues",
+                "source": "https://github.com/tymondesigns/jwt-auth"
+            },
+>>>>>>> 47f1a6f51b7319fe5a017225efd51695920a31a7
             "funding": [
                 {
                     "url": "https://www.patreon.com/seantymon",
@@ -5587,12 +5614,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Facade\\Ignition\\": "src"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Facade\\Ignition\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5606,6 +5633,15 @@
                 "laravel",
                 "page"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "docs": "https://flareapp.io/docs/ignition-for-laravel/introduction",
+                "forum": "https://twitter.com/flareappio",
+                "issues": "https://github.com/facade/ignition/issues",
+                "source": "https://github.com/facade/ignition"
+            },
+>>>>>>> 47f1a6f51b7319fe5a017225efd51695920a31a7
             "time": "2021-12-27T15:11:24+00:00"
         },
         {

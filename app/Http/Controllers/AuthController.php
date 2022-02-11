@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
+
+
 class AuthController extends Controller
 {
     public function __construct()
@@ -49,9 +52,8 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user'=>Auth::user()
+            'user'=>Auth::user(),
+
         ]);
     }
-
-
 }
