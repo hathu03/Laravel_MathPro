@@ -35,9 +35,9 @@ class PostController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $postAll = Post::findOrFail($id);
         $data = $request->only('user_id', 'content', 'image', 'status_id');
-        $post = Post::update($data);
-        return response()->json(["data" => $post, "oke" => $postAll]);
+        $post = Post::findOrFail($id);
+        $post->update($data);
+        return response()->json(["data" => $post]);
     }
 }
