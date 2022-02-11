@@ -22,13 +22,18 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::middleware('auth:api')->group(function () {
         Route::post('logout', [AuthController::class, 'logout']);
-//        Route::post('refresh', 'AuthController@refresh');
+//    Route::post('refresh', 'AuthController@refresh');
         Route::post('me', [AuthController::class, 'me']);
     });
 });
+
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);
     Route::post('/create', [UserController::class, 'store']);
+    Route::get('/detail/{id}', [UserController::class, 'show']);
+    Route::delete('/delete/{id}', [UserController::class, 'destroy']);
+    Route::put('/update/{id}', [UserController::class, 'edit']);
+
 });
 
 Route::prefix('/posts')->group(function () {
@@ -36,7 +41,7 @@ Route::prefix('/posts')->group(function () {
     Route::post('/create', [PostController::class, 'store']);
     Route::delete('/delete/{id}', [PostController::class, 'destroy']);
     Route::get('/detail/{id}', [PostController::class, 'show']);
-    Route::put('/update/{id}', [PostController::class, 'update']);
+    Route::put('/update/{id}', [PostController::class, 'edit']);
 });
 
 
