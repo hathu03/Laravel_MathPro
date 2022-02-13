@@ -20,32 +20,36 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
-
-
-    Route::prefix('auth')->group(function () {
-        Route::post('login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
-        Route::middleware('auth:api')->group(function () {
-            Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+Route::prefix('auth')->group(function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::middleware('auth:api')->group(function () {
+        Route::post('logout', [AuthController::class, 'logout']);
 //    Route::post('refresh', 'AuthController@refresh');
-            Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
-        });
+        Route::post('me', [AuthController::class, 'me']);
     });
+});
 
+Route::prefix('users')->group(function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+    Route::put('/{id}', [UserController::class, 'edit']);
 
+});
 
-    Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index']);
-        Route::post('/create', [UserController::class, 'store']);
-    });
+Route::prefix('/posts')->group(function () {
+    Route::get('/', [PostController::class, 'getAll']);
+    Route::get('/profile', [PostController::class, 'getList']);
+    Route::post('/', [PostController::class, 'store']);
+    Route::delete('/{id}', [PostController::class, 'destroy']);
+    Route::get('/{id}', [PostController::class, 'show']);
+    Route::put('/{id}', [PostController::class, 'edit']);
 
-    Route::prefix('/posts')->group(function () {
-        Route::get('/', [PostController::class, 'index']);
-        Route::post('/create', [PostController::class, 'store']);
-        Route::delete('/delete/{id}', [PostController::class, 'destroy']);
-        Route::get('/detail/{id}', [PostController::class, 'show']);
-        Route::put('/update/{id}', [PostController::class, 'update']);
-    });
-
+});
+Route::prefix("/statuses")->group(function (){
+    Route::get("/", [\App\Http\Controllers\StatusController::class, "index"]);
+});
 
 
 
