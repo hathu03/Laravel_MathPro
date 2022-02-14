@@ -3,22 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with("user")->get();
         return response()->json(['data' => $posts]);
     }
 
-    public function store(Request $request)
+    public function getAll()
     {
-        $data = $request->only('used_id', 'content', 'image', 'status_id');
-        $post = Post::create($data);
-        return response()->json(['data' => $post, "success" => 'Thêm mới thành công']);
+        $post = Post::with("user", "status")->orderBy("created_at", "DESC")->get();
+        return response()->json($post);
     }
+
+
+    function getList() {
+        $userLogin = Auth::user();
+        $posts = $userLogin->posts()->get();
+        $data = [
+            'status' => 'success',
+            'data' => $posts
+        ];
+
+        return response()->json($data);
+    }
+
+
+    function store(Request $request) {
+        $data = $request->only("user_id", "content", "status_id", "image");
+        $post = Post::query()->create($data);
+        return response()->json($post);
+    }
+
 
     public function destroy($id)
     {
