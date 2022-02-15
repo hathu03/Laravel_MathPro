@@ -16,44 +16,44 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = new User();
-        $user->fullname = "Ha";
+        $user->fullname = "Hà Thu";
         $user->email = "ha@gmail.com";
         $user->password = Hash::make(123456);
         $user->phone = "0912345678";
-        $user->address = "Trung Quoc";
-        $user->hobby = "an ngu nghi";
+        $user->address = "Hà Nội";
+        $user->hobby = "Ăn, ngủ";
         $user->role = "Admin";
         $user->save();
 
         $user = new User();
-        $user->fullname = "Tiep";
+        $user->fullname = "Tiệp Nguyễn";
         $user->email = "tiep@gmail.com";
         $user->password = Hash::make(123456);
         $user->phone = "0929303130";
-        $user->address = "Ha Noi";
-        $user->hobby = "di choi nghe nhac";
+        $user->address = "Hà Nội";
+        $user->hobby = "Đi chơi, nghe nhạc";
         $user->role = "User";
         $user->save();
 
 
         $user = new User();
-        $user->fullname = "My";
+        $user->fullname = "Mỹ Trần";
         $user->email = "my@gmail.com";
         $user->password = Hash::make(123456);
         $user->phone = "0332882276";
-        $user->address = "Ha Nam";
-        $user->hobby = "xinh gai hoc gioi";
+        $user->address = "Sài Gòn";
+        $user->hobby = "Xinh gái,học giỏi";
         $user->role = "User";
         $user->save();
 
 
         $user = new User();
-        $user->fullname = "Anh";
+        $user->fullname = "Tuấn Anh";
         $user->email = "anh@gmail.com";
         $user->password = Hash::make(123456);
         $user->phone = "091234537";
-        $user->address = "Viet Nam";
-        $user->hobby = "dep trai nhat gai";
+        $user->address = "Việt Nam";
+        $user->hobby = "Sở khanh";
         $user->role = "User";
         $user->save();
     }
