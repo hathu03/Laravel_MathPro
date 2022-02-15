@@ -17,7 +17,17 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
+        $user = new User();
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->fullname = $request->fullname;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->hobby = $request->hobby;
+        $user->birthday = $request->birthday;
+        $user->role = $request->role;
+        $user->save();
+        return response()->json(["data"=>$user, "success"=>true]);
     }
 
 
@@ -25,6 +35,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         return response()->json($user);
+    }
+
+    public function showOfPost($id)
+    {
+        $user = User::findOrFail($id);
+        $data = $user->posts()->get();
+        return response()->json($data);
     }
 
     public function destroy($id)
