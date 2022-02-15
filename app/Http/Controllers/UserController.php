@@ -37,6 +37,13 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function showOfPost($id)
+    {
+        $user = User::findOrFail($id);
+        $data = $user->posts()->get();
+        return response()->json($data);
+    }
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);
