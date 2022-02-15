@@ -16,15 +16,15 @@ class StatusSeeder extends Seeder
     {
 
         $status = new Status();
-        $status->name = "private";
+        $status->name = "Private";
         $status->save();
 
         $status = new Status();
-        $status->name = "friend";
+        $status->name = "Friend";
         $status->save();
 
         $status = new Status();
-        $status->name = "public";
+        $status->name = "Public";
         $status->save();
     }
 }

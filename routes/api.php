@@ -35,6 +35,7 @@ Route::prefix('users')->group(function () {
     Route::get('/{id}', [UserController::class, 'show']);
     Route::delete('/{id}', [UserController::class, 'destroy']);
     Route::put('/{id}', [UserController::class, 'edit']);
+    Route::get('/{id}/with', [UserController::class, 'showOfPost']);
 
 });
 
