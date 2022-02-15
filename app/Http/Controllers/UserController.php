@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json(["data"=>$users, "success"=>true]);
+        return response()->json(["data" => $users, "success" => true]);
     }
 
     public function store(Request $request)
@@ -26,8 +27,13 @@ class UserController extends Controller
         $user->hobby = $request->hobby;
         $user->birthday = $request->birthday;
         $user->role = $request->role;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $path = $image->store('images','public');
+            $user->image = $path;
+        }
         $user->save();
-        return response()->json(["data"=>$user, "success"=>true]);
+        return response()->json(["data" => $user, "success" => true]);
     }
 
 
@@ -51,11 +57,24 @@ class UserController extends Controller
         return response()->json(["success" => "Xóa thành công"]);
     }
 
-//    public function edit(Request $request, $id)
-//    {
-//        $data = $request->only("email","password","fullname","address", "phone","hobby", "birthday", "role");
-//        $user = User::findOrFail($id);
-//        $user->update($data);
-//        return response()->json(["data" => $user]);
-//    }
+    public function edit(UpdateUserRequest $request)
+    {
+        $user = User::findOrFail($request->id);
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->fullname = $request->fullname;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->hobby = $request->hobby;
+        $user->birthday = $request->birthday;
+        $user->role = $request->role;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('image', 'public');
+            $user->image = $path;
+        }
+        $user->save();
+        return response()->json(["data" => $user]);
+
+    }
 }
