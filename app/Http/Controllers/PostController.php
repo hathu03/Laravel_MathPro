@@ -46,7 +46,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        return response()->json(["success" => "Xóa thành công"]);
+        return response()->json(["success" => true]);
     }
 
     public function show($id)
