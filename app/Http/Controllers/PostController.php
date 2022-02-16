@@ -60,6 +60,6 @@ class PostController extends Controller
         $data = $request->only('user_id', 'content', 'image', 'status_id');
         $post = Post::findOrFail($id);
         $post->update($data);
-        return response()->json(["data" => $post]);
+        return response()->json($post);
     }
 }

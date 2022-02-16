@@ -57,7 +57,7 @@ class UserController extends Controller
         return response()->json(["success" => "Xóa thành công"]);
     }
 
-    public function edit(UpdateUserRequest $request)
+    public function edit(Request $request)
     {
         $user = User::findOrFail($request->id);
         $user->email = $request->email;
