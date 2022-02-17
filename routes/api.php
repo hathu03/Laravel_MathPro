@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\UserController;
@@ -50,6 +51,12 @@ Route::prefix('/posts')->group(function () {
 });
 Route::prefix("/statuses")->group(function (){
     Route::get("/", [\App\Http\Controllers\StatusController::class, "index"]);
+});
+
+Route::prefix("/comments")->group(function (){
+    Route::get("/{id}", [CommentController::class, "getCommentById"]);
+    Route::post("", [CommentController::class, "store"]);
+    Route::get("", [CommentController::class, "index"]);
 });
 
 

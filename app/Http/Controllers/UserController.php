@@ -46,7 +46,7 @@ class UserController extends Controller
     public function showOfPost($id)
     {
         $user = User::findOrFail($id);
-        $data = $user->posts()->get();
+        $data = $user->posts()->with('comments')->orderBy("created_at", "DESC")->get();
         return response()->json($data);
     }
 
