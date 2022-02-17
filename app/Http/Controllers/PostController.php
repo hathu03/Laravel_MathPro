@@ -18,7 +18,7 @@ class PostController extends Controller
 
     public function getAll()
     {
-        $post = Post::with("user", "status")->orderBy("created_at", "DESC")->get();
+        $post = Post::with("user", "status","comments")->orderBy("created_at", "DESC")->get();
         return response()->json($post);
     }
 
